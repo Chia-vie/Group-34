@@ -20,7 +20,9 @@ def select_file():
     '''This function is called by the open_button'''
     # We should think about which kind of files we accept
     filetypes = (
-        ('text files', '*.txt'),
+        ('CSV files', '*.csv'),
+        ('HDF5 files', '*.hdf5'),
+        ('Fits files', '*.fits'),
         ('All files', '*.*'))
 
     filename = fd.askopenfilename(
