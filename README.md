@@ -4,3 +4,6 @@ Group-34 project for codeastro workshop
 ## Project ideas
 
 Tool for creating mock IFU (galaxy) spectra 
+
+Easy solution for integrating sliders in plots
+
