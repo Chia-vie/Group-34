@@ -7,19 +7,18 @@ from plotter import Plotter
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 
-
 def pressbutton(choice):
+    '''This function is called when one
+    clicks on one of the image buttons'''
     global out1
     # call function
     plot = Plotter(choice)
     out.set(plot.plottype())
     window.update_idletasks()
 
-def openfile():
-    global path
-    path = fd.askopenfilename()
-
 def select_file():
+    '''This function is called by the open_button'''
+    # We should think about which kind of files we accept
     filetypes = (
         ('text files', '*.txt'),
         ('All files', '*.*'))
@@ -33,12 +32,13 @@ def select_file():
         title='Selected File',
         message=filename)
 
-# create tkinter window
+# Create tkinter window
 window = tk.Tk()
 window.config(bg='pale turquoise')
 
 # Name of the "App"
 window.title('Name')
+
 # Variables for the output, currently just a string
 out = tk.StringVar()
 out.set('')
@@ -69,7 +69,7 @@ plotbutton3 = tk.Button(window, image=preview_img_3, text='Enter', bg='red', fg=
 # Open file button
 open_button = ttk.Button(window, text='Open a File', command=select_file)
 
-# positions
+# position everything on the window
 # row,column
 #  __ __ __
 # |00 01 02|
