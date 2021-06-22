@@ -30,6 +30,7 @@ functions plot/ do stuff with data
 
 How to test?
 
+example: https://didaskalia-jpc.blogspot.com/2019/02/step-by-step-how-to-plot-map-with.html
 
 
 
