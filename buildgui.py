@@ -54,9 +54,9 @@ description = tk.Label(window,
                        font=('Helvetica', 16), bg='light blue', fg='black')
 
 # Call preview images
-preview_img_1 = tk.PhotoImage(file='one.png')
-preview_img_2 = tk.PhotoImage(file='two.png')
-preview_img_3 = tk.PhotoImage(file='three.png')
+preview_img_1 = tk.PhotoImage(file='pictures/one.png')
+preview_img_2 = tk.PhotoImage(file='pictures/two.png')
+preview_img_3 = tk.PhotoImage(file='pictures/three.png')
 
 # Show output, this is now a string, need to look how we can have an image
 result = tk.Label(window, textvariable=out, font=('Helvetica',16, 'bold'), bg='light blue', fg='blue4', width = 40, height=2)
