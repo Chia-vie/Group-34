@@ -15,11 +15,22 @@ The next two days will have a lot of scaffolding work for your code packages. To
 
 1) Tool for creating mock IFU (galaxy) spectra 
 
-2) Easy solution for integrating sliders in plots, with large datasets
-
-    Plotting, rcParams-Vorlage? 
-
+### 2) Easy solution for integrating sliders in plots, with large datasets, + save button, Plotting, rcParams-Vorlage? Make a GUI?
+    
 3) Data handling  
+
+## Things to consider:
+
+Need multiple functions, how to structure that?
+What to use for GUI? Possible tools:
+    Tkinter, PyQt, Plotly
+
+Object contains data, 
+functions plot/ do stuff with data
+
+How to test?
+
+
 
 
 
