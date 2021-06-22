@@ -23,7 +23,7 @@ The next two days will have a lot of scaffolding work for your code packages. To
 
 Need multiple functions, how to structure that?
 What to use for GUI? Possible tools:
-    Tkinter, PyQt, Plotly
+    Tkinter, PyQt, Plotly, PySimpleGUI
 
 Object contains data, 
 functions plot/ do stuff with data
