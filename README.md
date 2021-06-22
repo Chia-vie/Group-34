@@ -13,8 +13,14 @@ The next two days will have a lot of scaffolding work for your code packages. To
 
 ## Project ideas
 
-Tool for creating mock IFU (galaxy) spectra 
+1) Tool for creating mock IFU (galaxy) spectra 
 
-Easy solution for integrating sliders in plots
+2) Easy solution for integrating sliders in plots, with large datasets
+
+    Plotting, rcParams-Vorlage? 
+
+3) Data handling  
+
+
 
 
