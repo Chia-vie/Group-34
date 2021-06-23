@@ -5,10 +5,10 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
-from .plotter import Plotter
+from plotter import Plotter
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from .dataframe import dummydata, dummydata2
+from dataframe import dummydata, dummydata2
 
 class Ourcoolapp():
     def __init__(self, window):

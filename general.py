@@ -1,14 +1,18 @@
-import os
-
 print('Welcome, I\'m importing a couple of modules.')
 
-from dataframe import DataFrame
-from plotter import Plotter
-from buildgui import Ourcoolapp
+from App import Ourcoolapp
+import tkinter as tk
 
+# Create tkinter window
+window = tk.Tk()
+# Call Ourcoolapp
+Ourcoolapp(window)
+# Let the window loop
+window.mainloop()
+
+'''
 # eventually this has to be some sort of open file button
 path = input('Please enter path to your file')
-
 # check if path is valid and if so read data
 while True:
     df = DataFrame(path)
@@ -17,4 +21,5 @@ while True:
         break
     else:
         path = input(df.msg)
+'''
 
