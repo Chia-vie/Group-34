@@ -6,9 +6,11 @@ import plotly.io as pio
 
 
 class Plotter():
-    """ add documentation 
-    
-    for now it works the following:
+    def __init__(self, choice, df, gui_input=None, fig_size=(900,700)):
+        '''
+        add documentation
+
+        for now it works the following:
         1) initialize a Plotter obj by providing the plot choice, a dataframe
                 (tested only for pandas df for now),  and a dictionary, which
                 contains the values selected in the gui:
@@ -17,10 +19,8 @@ class Plotter():
                     - optional: a title, x,y or z limits (as tuple)
         2) call create_plot on the Plotter obj to show the plot given the
                 input choice
-
-    """
-
-    def __init__(self, choice, df, gui_input=None, fig_size=(900,700)):
+        Args:
+        '''
         self.choice = choice
         self.df = df
         self.fig_size = fig_size
@@ -65,6 +65,9 @@ class Plotter():
         return msg
 
     def plot_type_dummy(self):
+        '''
+        Just a dummy function
+        '''
         pass
 
     def create_plot(self):
