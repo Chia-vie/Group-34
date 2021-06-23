@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
-        
 
 class Plotter():
     """ add documentation """
@@ -11,8 +10,8 @@ class Plotter():
 
     def plottype(self):
         if self.choice == '1':
-            msg = 'You chose plot type 1'
-            self.plot_type1()
+            msg = 'You chose plot type 1: dummy plot.'
+            self.plot_type_dummy()
         elif self.choice == '2':
             msg = 'You chose plot type 2'
         elif self.choice == '3':

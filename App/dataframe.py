@@ -3,6 +3,10 @@ print('importing dataframe')
 import vaex
 import os
 
+def dummydata():
+    df = vaex.example()
+    return df
+
 class DataFrame():
     '''basic things like reading in data'''
     def __init__(self,path):
