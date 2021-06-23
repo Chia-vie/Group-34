@@ -53,9 +53,11 @@ class Plotter():
 
     def plottype(self):
         if self.choice == '1':
-            msg = 'You chose plot type 1'
+            msg = 'You chose plot type 1: dummy plot.'
+            self.plot_type_dummy()
         elif self.choice == '2':
             msg = 'You chose plot type 2'
+            self.create_plot()
         elif self.choice == '3':
             msg = 'You chose plot type 3'
         return msg
@@ -65,9 +67,9 @@ class Plotter():
 
     def create_plot(self):
         if self.choice == "1":
-            self.plot_type1()
-        if self.choice == "2":
             pass
+        if self.choice == "2":
+            self.plot_type1()
         if self.choice == "3":
             pass
 
