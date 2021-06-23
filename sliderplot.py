@@ -6,7 +6,8 @@ import plotly.graph_objs as go
 
 
 # read in the data
-df = pd.read_csv("./example_data/run_GGM_CRlER_norm_st.csv", index_col="Unnamed: 0", float_precision='round_trip')
+file = "./example_data/run_GGM_1M_CRlER_norm_st.csv"
+df = pd.read_csv(file, index_col="Unnamed: 0", float_precision='round_trip')
 columns = df.columns
 snaptimes = np.array([c.lstrip('R_') for c in columns if 'R_' in c])
 print(snaptimes)
