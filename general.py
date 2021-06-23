@@ -1,9 +1,7 @@
 print('Welcome, I\'m importing a couple of modules.')
 
+from functions import Ourcoolapp
 import tkinter as tk
-
-
-from functions.buildgui import Ourcoolapp
 
 # Create tkinter window
 window = tk.Tk()
@@ -11,6 +9,7 @@ window = tk.Tk()
 Ourcoolapp(window)
 # Let the window loop
 window.mainloop()
+
 '''
 # eventually this has to be some sort of open file button
 path = input('Please enter path to your file')

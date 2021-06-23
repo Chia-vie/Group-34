@@ -1,19 +1,26 @@
 # Color schemes
 # http://www.science.smith.edu/dftwiki/index.php/Color_Charts_for_TKinter
 
+import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog as fd
+from tkinter.messagebox import showinfo
+from .plotter import Plotter
+
 class Ourcoolapp():
     def __init__(self, window):
+        self.window = window
         # background color
-        window.config(bg='pale turquoise')
+        self.window.config(bg='pale turquoise')
         # title
-        window.title('Group-34: Our fabulous App')
+        self.window.title('Group-34: Our fabulous App')
         # Variables for the output, currently just a string
         self.out = tk.StringVar()
         self.out.set('')
         # Read in preview images
-        self.preview_img_1 = tk.PhotoImage(file='../pictures/one.png')
-        self.preview_img_2 = tk.PhotoImage(file='../pictures/two.png')
-        self.preview_img_3 = tk.PhotoImage(file='../pictures/three.png')
+        self.preview_img_1 = tk.PhotoImage(file='pictures/one.png')
+        self.preview_img_2 = tk.PhotoImage(file='pictures/two.png')
+        self.preview_img_3 = tk.PhotoImage(file='pictures/three.png')
         self.buttonsandlabels()
 
     def pressbutton(self,choice):
@@ -23,7 +30,7 @@ class Ourcoolapp():
         plot = Plotter(choice)
         # set out variable accordingly
         self.out.set(plot.plottype())
-        window.update_idletasks()
+        self.window.update_idletasks()
 
     def select_file(self):
         '''This function is called by the open_button'''
@@ -46,34 +53,34 @@ class Ourcoolapp():
     def buttonsandlabels(self):
 
         # Header in the window
-        self.header = tk.Label(window,
+        self.header = tk.Label(self.window,
                           text='*******    We need a cool name for this!    ********',
                           font=('Helvetica',16, 'bold'), bg='light blue', fg='blue4',
                           width = 40, height=2)
         # Text in the window
-        self.description = tk.Label(window,
+        self.description = tk.Label(self.window,
                                text='Load data and choose a plot-type!',
                                font=('Helvetica', 16), bg='light blue', fg='black')
 
         # Show output, this is now a string, need to look how we can have an (interactive) image
-        self.result = tk.Label(window,
+        self.result = tk.Label(self.window,
                                textvariable = self.out,
                                font=('Helvetica',16, 'bold'), bg='light blue', fg='blue4',
                                width = 40, height=2)
 
         # Buttons to choose which plot you want
-        self.plotbutton1 = tk.Button(window, image=self.preview_img_1,
+        self.plotbutton1 = tk.Button(self.window, image=self.preview_img_1,
                                      text='Enter', bg='red', fg='orange',
                                      command=lambda: self.pressbutton('1'))
-        self.plotbutton2 = tk.Button(window, image=self.preview_img_2,
+        self.plotbutton2 = tk.Button(self.window, image=self.preview_img_2,
                                      text='Enter', bg='red', fg='orange',
                                      command=lambda: self.pressbutton('2'))
-        self.plotbutton3 = tk.Button(window, image=self.preview_img_3,
+        self.plotbutton3 = tk.Button(self.window, image=self.preview_img_3,
                                      text='Enter', bg='red', fg='orange',
                                      command=lambda: self.pressbutton('3'))
 
         # Open file button
-        self.open_button = ttk.Button(window, text='Open a File', command=self.select_file)
+        self.open_button = ttk.Button(self.window, text='Open a File', command=self.select_file)
 
         # Call function to place everything on the window
         self.place()
