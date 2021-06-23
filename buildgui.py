@@ -3,33 +3,66 @@
 
 import tkinter as tk
 from tkinter import ttk
-from plotter import Plotter
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
+from .plotter import Plotter
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+from .dataframe import dummydata, dummydata2
 
 class Ourcoolapp():
     def __init__(self, window):
+        self.window = window
         # background color
-        window.config(bg='pale turquoise')
+        self.window.config(bg='pale turquoise')
         # title
-        window.title('Group-34: Our fabulous App')
+        self.window.title('Group-34: Our fabulous App')
         # Variables for the output, currently just a string
         self.out = tk.StringVar()
         self.out.set('')
+        self.logmsg = tk.StringVar()
+        self.logmsg.set('Please select a dataframe and click on the type of plot you would you like to make')
         # Read in preview images
-        self.preview_img_1 = tk.PhotoImage(file='pictures/one.png')
-        self.preview_img_2 = tk.PhotoImage(file='pictures/two.png')
-        self.preview_img_3 = tk.PhotoImage(file='pictures/three.png')
+        self.preview_img_1 = tk.PhotoImage(file='App/pictures/one.png')
+        self.preview_img_2 = tk.PhotoImage(file='App/pictures/two.png')
+        self.preview_img_3 = tk.PhotoImage(file='App/pictures/three.png')
         self.buttonsandlabels()
 
     def pressbutton(self,choice):
         '''This function is called when one
         clicks on one of the image buttons'''
-        # call plotter function
-        plot = Plotter(choice)
-        # set out variable accordingly
-        self.out.set(plot.plottype())
-        window.update_idletasks()
+        # check if dataframe was read in
+        if hasattr(self, 'df'):
+            if choice == "2":
+                gui_input = {"title": "plot_type2", "xlim": (0.3, 120), "ylim": (0.5, 18),
+                "xyz_cols": ("period", "radius", "core_mass"),
+                "fig_size": (600,700)
+                 }
+                gui_input["slider_cols"] = self.slider_cols
+                plot = Plotter(choice, self.df, gui_input=gui_input)
+                plot.create_plot()
+                # set out variable accordingly
+                self.logmsg.set(plot.plottype())
+            else:
+                # call plotter function
+                plot = Plotter(choice, self.df)
+                # set out variable accordingly
+                self.logmsg.set(plot.plottype())
+        else:
+            self.logmsg.set('Please select a dataframe before plotting')
+        # display the updated out string in window
+        self.window.update_idletasks()
+
+
+    def decrease(self):
+        x, y = self.line.get_data()
+        self.line.set_ydata(y - 0.2 * x)
+        self.canvas.draw()
+
+    def increase(self):
+        x, y = self.line.get_data()
+        self.line.set_ydata(y + 0.2 * x)
+        self.canvas.draw()
 
     def select_file(self):
         '''This function is called by the open_button'''
@@ -49,38 +82,55 @@ class Ourcoolapp():
             title='Selected File',
             message=filename)
 
+    # just for testing
+    def select_dummy_file(self):
+        self.df = dummydata()
+        self.logmsg.set('You chose to load the dummy data')
+    
+    def select_dummy_file2(self):
+        self.df, self.slider_cols = dummydata2()
+        self.logmsg.set("You chose to load Laura's data")
+
+    def makefig(self):
+        self.fig = Figure()
+        self.ax = self.fig.add_subplot(111)
+        self.line, = self.ax.plot(range(10))
+
     def buttonsandlabels(self):
 
         # Header in the window
-        self.header = tk.Label(window,
+        self.header = tk.Label(self.window,
                           text='*******    We need a cool name for this!    ********',
                           font=('Helvetica',16, 'bold'), bg='light blue', fg='blue4',
                           width = 40, height=2)
-        # Text in the window
-        self.description = tk.Label(window,
-                               text='Load data and choose a plot-type!',
+
+        # Show log messages
+        self.description = tk.Label(self.window,
+                               textvariable=self.logmsg,
                                font=('Helvetica', 16), bg='light blue', fg='black')
 
-        # Show output, this is now a string, need to look how we can have an (interactive) image
-        self.result = tk.Label(window,
-                               textvariable = self.out,
-                               font=('Helvetica',16, 'bold'), bg='light blue', fg='blue4',
-                               width = 40, height=2)
-
         # Buttons to choose which plot you want
-        self.plotbutton1 = tk.Button(window, image=self.preview_img_1,
+        self.plotbutton1 = tk.Button(self.window, image=self.preview_img_1,
                                      text='Enter', bg='red', fg='orange',
-                                     command=lambda: self.pressbutton('1'))
-        self.plotbutton2 = tk.Button(window, image=self.preview_img_2,
+                                     command=lambda: self.pressbutton('1'),
+                                     width = 300, height=400)
+        self.plotbutton2 = tk.Button(self.window, image=self.preview_img_2,
                                      text='Enter', bg='red', fg='orange',
-                                     command=lambda: self.pressbutton('2'))
-        self.plotbutton3 = tk.Button(window, image=self.preview_img_3,
+                                     command=lambda: self.pressbutton('2'),
+                                     width = 300, height=400)
+        self.plotbutton3 = tk.Button(self.window, image=self.preview_img_3,
                                      text='Enter', bg='red', fg='orange',
-                                     command=lambda: self.pressbutton('3'))
+                                     command=lambda: self.pressbutton('3'),
+                                     width = 300, height=400)
 
-        # Open file button
-        self.open_button = ttk.Button(window, text='Open a File', command=self.select_file)
+        self.open_button = ttk.Button(self.window, text='Open a file', command=self.select_file)
+        self.dummy_button = ttk.Button(self.window, text='Open dummy data', command=self.select_dummy_file)
+        self.dummy_button2 = ttk.Button(self.window, text="Open Laura's dummy data", command=self.select_dummy_file2)
 
+        self.makefig()
+        self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
+        self.canvas.draw()
+        self.widgets = self.canvas.get_tk_widget()
         # Call function to place everything on the window
         self.place()
 
@@ -96,12 +146,9 @@ class Ourcoolapp():
         self.header.grid(row=0, column=0, columnspan=3, rowspan=2)
         self.description.grid(row=2,column=0, columnspan=3, rowspan=1)
         self.open_button.grid(row=0, column=0)
+        self.dummy_button.grid(row=1,column=0)
+        self.dummy_button2.grid(row=1,column=2)
         self.plotbutton1.grid(row=3, column=0)
         self.plotbutton2.grid(row=3,column=1)
         self.plotbutton3.grid(row=3, column=2)
-        self.result.grid(row=5, column=0, columnspan=3)
-
-# Create tkinter window
-window = tk.Tk()
-Ourcoolapp(window)
-window.mainloop()
+        self.widgets.grid(row=7,column=1, columnspan=1)
