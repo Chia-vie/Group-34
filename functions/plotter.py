@@ -4,12 +4,8 @@ import plotly.graph_objects as go
         
 
 class Plotter():
-<<<<<<< HEAD:plotter.py
-
+""" add documentation """
     def __init__(self, choice, df):
-=======
-    def __init__(self, choice):
->>>>>>> origin/develop:functions/plotter.py
         self.choice = choice
         self.df = df
 
@@ -24,11 +20,19 @@ class Plotter():
         return msg
 
 
-    def plot_type1(self, ylim=(0.5, np.max(self.df['radius'].values)),
-                         title = 'Time evo planet population'):
+    def plot_type1(self, ylim=None,
+                         title = None):
         """ currently everyting is set up for my data set only. 
-        and in a bad way. maybe pass column names instead. """ 
+        and in a bad way. maybe pass column names instead. 
+        dictionary with params
+        """ 
         
+        if ylim == None:
+            ylim=(0.5, np.max(self.df['radius'].values))
+        if title == None:
+            title = 'title'
+
+
         # plot layout
         figure_height, figure_width = 700, 950
         layout = go.Layout(height=figure_height,
