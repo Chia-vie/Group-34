@@ -1,12 +1,6 @@
 # Color schemes
 # http://www.science.smith.edu/dftwiki/index.php/Color_Charts_for_TKinter
 
-import tkinter as tk
-from tkinter import ttk
-from plotter import Plotter
-from tkinter import filedialog as fd
-from tkinter.messagebox import showinfo
-
 class Ourcoolapp():
     def __init__(self, window):
         # background color
@@ -17,9 +11,9 @@ class Ourcoolapp():
         self.out = tk.StringVar()
         self.out.set('')
         # Read in preview images
-        self.preview_img_1 = tk.PhotoImage(file='pictures/one.png')
-        self.preview_img_2 = tk.PhotoImage(file='pictures/two.png')
-        self.preview_img_3 = tk.PhotoImage(file='pictures/three.png')
+        self.preview_img_1 = tk.PhotoImage(file='../pictures/one.png')
+        self.preview_img_2 = tk.PhotoImage(file='../pictures/two.png')
+        self.preview_img_3 = tk.PhotoImage(file='../pictures/three.png')
         self.buttonsandlabels()
 
     def pressbutton(self,choice):
@@ -100,8 +94,3 @@ class Ourcoolapp():
         self.plotbutton2.grid(row=3,column=1)
         self.plotbutton3.grid(row=3, column=2)
         self.result.grid(row=5, column=0, columnspan=3)
-
-# Create tkinter window
-window = tk.Tk()
-Ourcoolapp(window)
-window.mainloop()
