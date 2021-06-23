@@ -8,7 +8,7 @@ from tkinter.messagebox import showinfo
 from .plotter import Plotter
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from .dataframe import dummydata
+from .dataframe import dummydata, dummydata2
 
 class Ourcoolapp():
     def __init__(self, window):
@@ -33,14 +33,26 @@ class Ourcoolapp():
         clicks on one of the image buttons'''
         # check if dataframe was read in
         if hasattr(self, 'df'):
-            # call plotter function
-            plot = Plotter(choice, self.df)
-            # set out variable accordingly
-            self.logmsg.set(plot.plottype())
+            if choice == "2":
+                gui_input = {"title": "plot_type2", "xlim": (0.3, 120), "ylim": (0.5, 18),
+                "xyz_cols": ("period", "radius", "core_mass"),
+                "fig_size": (600,700)
+                 }
+                gui_input["slider_cols"] = self.slider_cols
+                plot = Plotter(choice, self.df, gui_input=gui_input)
+                plot.create_plot()
+                # set out variable accordingly
+                self.logmsg.set(plot.plottype())
+            else:
+                # call plotter function
+                plot = Plotter(choice, self.df)
+                # set out variable accordingly
+                self.logmsg.set(plot.plottype())
         else:
             self.logmsg.set('Please select a dataframe before plotting')
         # display the updated out string in window
         self.window.update_idletasks()
+
 
     def decrease(self):
         x, y = self.line.get_data()
@@ -74,6 +86,10 @@ class Ourcoolapp():
     def select_dummy_file(self):
         self.df = dummydata()
         self.logmsg.set('You chose to load the dummy data')
+    
+    def select_dummy_file2(self):
+        self.df, self.slider_cols = dummydata2()
+        self.logmsg.set("You chose to load Laura's data")
 
     def makefig(self):
         self.fig = Figure()
@@ -109,6 +125,7 @@ class Ourcoolapp():
 
         self.open_button = ttk.Button(self.window, text='Open a file', command=self.select_file)
         self.dummy_button = ttk.Button(self.window, text='Open dummy data', command=self.select_dummy_file)
+        self.dummy_button2 = ttk.Button(self.window, text="Open Laura's dummy data", command=self.select_dummy_file2)
 
         self.makefig()
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
@@ -130,6 +147,7 @@ class Ourcoolapp():
         self.description.grid(row=2,column=0, columnspan=3, rowspan=1)
         self.open_button.grid(row=0, column=0)
         self.dummy_button.grid(row=1,column=0)
+        self.dummy_button2.grid(row=1,column=2)
         self.plotbutton1.grid(row=3, column=0)
         self.plotbutton2.grid(row=3,column=1)
         self.plotbutton3.grid(row=3, column=2)
