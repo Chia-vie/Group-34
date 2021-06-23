@@ -17,7 +17,7 @@ class DataFrame():
         # turn input into csv
         if self.path.endswith('.csv'):
             new_path = self.path
-        else: 
+        else:
             os.system("tr -s '[:blank:]' ',' < " + self.path + " > " + self.path + ".csv")
             new_path = self.path + '.csv'
 
@@ -29,10 +29,3 @@ class DataFrame():
         print('Success!\n')
         print('I read in the following file:\n')
         print(path_to_csv)
-
-
-
-
-
-
-#Comment

@@ -4,7 +4,7 @@ import plotly.graph_objects as go
         
 
 class Plotter():
-""" add documentation """
+    """ add documentation """
     def __init__(self, choice, df):
         self.choice = choice
         self.df = df
@@ -19,6 +19,8 @@ class Plotter():
             msg = 'You chose plot type 3'
         return msg
 
+    def plot_type_dummy(self):
+        pass
 
     def plot_type1(self, ylim=None,
                          title = None):
