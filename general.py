@@ -4,7 +4,7 @@ print('Welcome, I\'m importing a couple of modules.')
 
 from dataframe import DataFrame
 from plotter import Plotter
-from buildgui import BuildGUI
+from buildgui import Ourcoolapp
 
 # eventually this has to be some sort of open file button
 path = input('Please enter path to your file')
