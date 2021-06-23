@@ -6,6 +6,8 @@ from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 from .plotter import Plotter
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 
 class Ourcoolapp():
     def __init__(self, window):
@@ -18,9 +20,9 @@ class Ourcoolapp():
         self.out = tk.StringVar()
         self.out.set('')
         # Read in preview images
-        self.preview_img_1 = tk.PhotoImage(file='pictures/one.png')
-        self.preview_img_2 = tk.PhotoImage(file='pictures/two.png')
-        self.preview_img_3 = tk.PhotoImage(file='pictures/three.png')
+        self.preview_img_1 = tk.PhotoImage(file='App/pictures/one.png')
+        self.preview_img_2 = tk.PhotoImage(file='App/pictures/two.png')
+        self.preview_img_3 = tk.PhotoImage(file='App/pictures/three.png')
         self.buttonsandlabels()
 
     def pressbutton(self,choice):
@@ -31,6 +33,16 @@ class Ourcoolapp():
         # set out variable accordingly
         self.out.set(plot.plottype())
         self.window.update_idletasks()
+
+    def decrease(self):
+        x, y = self.line.get_data()
+        self.line.set_ydata(y - 0.2 * x)
+        self.canvas.draw()
+
+    def increase(self):
+        x, y = self.line.get_data()
+        self.line.set_ydata(y + 0.2 * x)
+        self.canvas.draw()
 
     def select_file(self):
         '''This function is called by the open_button'''
@@ -49,6 +61,10 @@ class Ourcoolapp():
         showinfo(
             title='Selected File',
             message=filename)
+    def makefig(self):
+        self.fig = Figure()
+        self.ax = self.fig.add_subplot(111)
+        self.line, = self.ax.plot(range(10))
 
     def buttonsandlabels(self):
 
@@ -82,6 +98,10 @@ class Ourcoolapp():
         # Open file button
         self.open_button = ttk.Button(self.window, text='Open a File', command=self.select_file)
 
+        self.makefig()
+        self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
+        self.canvas.draw()
+        self.widgets = self.canvas.get_tk_widget()
         # Call function to place everything on the window
         self.place()
 
@@ -101,3 +121,5 @@ class Ourcoolapp():
         self.plotbutton2.grid(row=3,column=1)
         self.plotbutton3.grid(row=3, column=2)
         self.result.grid(row=5, column=0, columnspan=3)
+        #self.canvas.grid(row=6, column=0, columnspan=3)
+        self.widgets.grid(row=7,column=1, columnspan=1)

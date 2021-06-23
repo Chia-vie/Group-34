@@ -1,6 +1,6 @@
 print('Welcome, I\'m importing a couple of modules.')
 
-from functions import Ourcoolapp
+from App import Ourcoolapp
 import tkinter as tk
 
 # Create tkinter window
