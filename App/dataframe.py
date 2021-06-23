@@ -2,10 +2,20 @@
 print('importing dataframe')
 import vaex
 import os
+import pandas as pd
+import numpy as np
 
 def dummydata():
     df = vaex.example()
     return df
+
+def dummydata2():
+    """ for plot_type2 """
+    cwd = os.getcwd().rstrip("App")
+    file = os.path.join(cwd, "examples/example_data/run_GGM_1M_CRlER_norm_st.csv")
+    df = pd.read_csv(file, index_col="Unnamed: 0", float_precision='round_trip')
+    slider_cols = np.array([c for c in df.columns if 'R_' in c])
+    return df, slider_cols
 
 class DataFrame():
     '''basic things like reading in data'''

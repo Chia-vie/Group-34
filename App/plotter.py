@@ -20,7 +20,7 @@ class Plotter():
 
     """
 
-    def __init__(self, choice, df, gui_input, fig_size=(900,700)):
+    def __init__(self, choice, df, gui_input=None, fig_size=(900,700)):
         self.choice = choice
         self.df = df
         self.fig_size = fig_size
@@ -28,7 +28,9 @@ class Plotter():
         # gui_input contains: colums to plot, axis limits, 
         # title etc..
         self.xyz_cols = gui_input["xyz_cols"]
-        if self.choice == "1":
+        if self.choice == "2":
+            if gui_input == None:
+                raise Exception("For type2 plot, need to provide gui_input dict.")
             try: 
                 self.slider_cols = gui_input["slider_cols"]
             except:
