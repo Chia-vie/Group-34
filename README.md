@@ -22,7 +22,7 @@ source venv/bin/activate
 Or:
 ```bash
 conda create -n slotpy python=3
-conda activate slot
+conda activate slotpy
 ```
 
 Install ```slotpy``` through pip:
