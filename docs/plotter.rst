@@ -1,4 +1,3 @@
-```
 .. _plotter:
 
 Plotter
@@ -6,4 +5,4 @@ Plotter
 
 .. automodule:: plotter
    :members:
-```
+

@@ -40,6 +40,12 @@ class Ourcoolapp():
                  }
                 gui_input["slider_cols"] = self.slider_cols
                 plot = Plotter(choice, self.df, gui_input=gui_input)
+                # the idea is to have this plot object, which through the GUI
+                # we can change parameters of, like the axis ranges, the 
+                # columns to plot etc... and after such update, one calls 
+                # the create_plot() method on the plot object to show the
+                # updated plot
+
                 plot.create_plot()
                 # set out variable accordingly
                 self.logmsg.set(plot.plottype())
