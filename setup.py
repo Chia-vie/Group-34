@@ -6,13 +6,13 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="Slot",
-    version="0.0.0",
+    version="0.0.1",
     author='Laura Ketzer, Christine Ackerl, George Paraschos',
     author_email='lketzer@aip.de, christine.ackerl@univie.ac.at, gfparaschos@mpifr.de',
     description='Sliders and Plots',
     long_description='''This package was developed during the Code/Astro workshop and is a 
     preliminary version of something cool! =)''',
-    url="gitlab.aip.de/...",
+    url="https://github.com/Chia-vie/slotpy",
     license='BSD',
     keywords='astronomy,plotting,...',
     packages=setuptools.find_packages(),
