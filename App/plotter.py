@@ -6,27 +6,35 @@ import plotly.io as pio
 
 
 class Plotter():
-    def __init__(self, choice, df, gui_input=None, fig_size=(900,700)):
-        '''
-        add documentation
+    """Create a plot object to visualize the data.
 
-        for now it works the following:
-        1) initialize a Plotter obj by providing the plot choice, a dataframe
-                (tested only for pandas df for now),  and a dictionary, which
-                contains the values selected in the gui:
-                    - list of x, y, z (color coded) columns
-                    - list of the slider columns (e.g. one col for each time step)
-                    - optional: a title, x,y or z limits (as tuple)
-        2) call create_plot on the Plotter obj to show the plot given the
-                input choice
-        Args:
-        '''
+    Create a plotly plot given a plot type choice, a dataframe, and input parameters to set up the plot layout.
+    Function to show the plot is create_plot().
+    
+    Args:
+        choice (str): "1", "2", or "3" for the different plot types
+        df (DataFrame): df (future: vaex) dataframe containing the data for the plot
+        gui_input (dict): dictionary with parameters to set up the plot:
+            - list of x, y, z (color coded) columns
+            - list of the slider columns (e.g. one col for each time step)
+            - optional: a title, x,y or z limits (as tuple)
+        fig_size (tuple): witdth and height of plot; Default: (900,700)
+
+    Examples:
+        >>> import slot
+        # create a plot object to display the data
+        # specifying the plot type and columns to plot & slide over
+        >>> plot = slot.Plotter("2", gui_input={"xyz_cols":["x", "y", "z"],
+                                                "slider_cols":[""y1", "y2"]})
+
+    """
+    def __init__(self, choice, df, gui_input=None, fig_size=(900,700)):
+        
         self.choice = choice
         self.df = df
         self.fig_size = fig_size
 
-        # gui_input contains: colums to plot, axis limits, 
-        # title etc..
+        # gui_input contains: colums to plot, axis limits, title etc..
         self.xyz_cols = gui_input["xyz_cols"]
         if self.choice == "2":
             if gui_input == None:
@@ -59,7 +67,6 @@ class Plotter():
             self.plot_type_dummy()
         elif self.choice == '2':
             msg = 'You chose plot type 2'
-            self.create_plot()
         elif self.choice == '3':
             msg = 'You chose plot type 3'
         return msg
@@ -78,15 +85,40 @@ class Plotter():
         if self.choice == "3":
             pass
 
+    def set_xlim(self, x_lower, x_upper):
+        """Set limits of the x-axis."""
+        self.xlim = (x_lower, x_upper)
+
+    def set_ylim(self, y_lower, y_upper):
+        """Set limits of the y-axis."""
+        self.ylim = (y_lower, y_upper)
+
+    def set_zlim(self, z_lower, z_upper):
+        """Set limits of the z-axis."""
+        self.zlim = (z_lower, z_upper)
+
+    def set_xyz_cols(self, xcol, ycol, zcol):
+        """Set the x-, y- and z-column names to plot.
+        FUTURE: could split this up into 3 functions
+        """ 
+        self.xyz_cols = [xcol, ycol, zcol]
+
+    def set_slider_cols(self, slider_cols):
+        """Set the columns to slide over (for plot type 1). 
+        Input is a list of column names (str)."""
+        self.slider_cols = slider_cols
+
     def plot_type1(self):
-        """  add documentation 
+        """Generate the interactive plotly plot.
         
         Scatter plot of y as a fct. of x, with z colorcoded,
         plus slider to shift over provided y columns (e.g. y at diff. times)
+        NOTE: x, y and z are all plotted in log10
 
-        x, y and z are all plotted in log10
+        Returns:
+            plot
+
         """
-
         # get the data for the specified columns
         x_axis = self.df[self.xyz_cols[0]]
         y_axis = self.df[self.xyz_cols[1]]
