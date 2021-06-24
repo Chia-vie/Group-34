@@ -1,14 +1,11 @@
-# Group-34 project:
-## Easy solution for plotting large datasets with sliders in a GUI
+# slotpy:
+## Slide and plot with python
 
-View time evolution of certain parameters in large datasets with one click
+You want to know how the parameters in your large datasets evolve?
 
-Integrate additional functionality for our specific (PhD-) projects
+Simply click and watch! 
 
-Make use of Tkinter (GUI) and vaex (handling large dataframes)
-
-
-![alt text](https://github.com/Chia-vie/Group-34/blob/develop/slot_logo%20(1)%20(2).png)
+![alt text](https://github.com/Chia-vie/slotpy/blob/main/slotpy_logo_prelim.png)
 
 
 
