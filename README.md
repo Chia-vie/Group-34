@@ -1,4 +1,4 @@
-# Group-34 project:
+# slotpy:
 ## Easy solution for plotting large datasets with sliders in a GUI
 
 View time evolution of certain parameters in large datasets with one click
