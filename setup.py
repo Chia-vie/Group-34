@@ -5,7 +5,7 @@ with open("requirements.txt", "r") as fh:
     requirements = fh.read().splitlines()
 
 setuptools.setup(
-    name="Slot",
+    name="slotpy",
     version="0.0.1",
     author='Laura Ketzer, Christine Ackerl, George Paraschos',
     author_email='lketzer@aip.de, christine.ackerl@univie.ac.at, gfparaschos@mpifr.de',
