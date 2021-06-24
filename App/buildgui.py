@@ -1,14 +1,14 @@
 # Color schemes
 # http://www.science.smith.edu/dftwiki/index.php/Color_Charts_for_TKinter
 
-import tkinter as tk
-from tkinter import ttk
+import tkinter as tk, numpy as np, os
+from tkinter import StringVar, ttk
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 from .plotter import Plotter
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from .dataframe import dummydata, dummydata2
+from .dataframe import DataFrame, dummydata, dummydata2
 
 class Ourcoolapp():
     def __init__(self, window):
@@ -27,6 +27,8 @@ class Ourcoolapp():
         self.preview_img_2 = tk.PhotoImage(file='App/pictures/two.png')
         self.preview_img_3 = tk.PhotoImage(file='App/pictures/three.png')
         self.buttonsandlabels()
+
+        self.file = StringVar
 
     def pressbutton(self,choice):
         '''This function is called when one
@@ -88,11 +90,23 @@ class Ourcoolapp():
             title='Selected File',
             message=filename)
 
+        self.file = filename
+
+        self.df = DataFrame(self.file)
+        if not self.file.endswith('.csv'):
+            updated_path = self.df.to_csv()
+        else:
+            updated_path = self.file
+        data = self.df.read_data(updated_path)
+        self.df = data[0]
+        self.slider_cols = data[1]
+        self.logmsg.set("You chose to load Laura's data the general way.")
+
     # just for testing
     def select_dummy_file(self):
         self.df = dummydata()
-        self.logmsg.set('You chose to load the dummy data')
-    
+        self.logmsg.set('You chose to load the dummy data.')
+
     def select_dummy_file2(self):
         self.df, self.slider_cols = dummydata2()
         self.logmsg.set("You chose to load Laura's data")
