@@ -12,12 +12,12 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../App'))
+sys.path.insert(0, os.path.abspath('../slotpy'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'Slot'
+project = 'Slotpy'
 copyright = '2021, Christine Ackerl, Laura K., George'
 author = 'Christine Ackerl, Laura K., George'
 master_doc='index'
