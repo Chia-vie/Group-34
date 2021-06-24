@@ -11,7 +11,7 @@ def dummydata():
 
 def dummydata2():
     """ for plot_type2 """
-    cwd = os.getcwd().rstrip("App")
+    cwd = os.getcwd()#.rstrip("slotpy")
     file = os.path.join(cwd, "examples/example_data/run_GGM_1M_CRlER_norm_st.csv")
     pdf = pd.read_csv(file, index_col="Unnamed: 0", float_precision='round_trip')
     pslider_cols = np.array([c for c in pdf.columns if 'R_' in c])
