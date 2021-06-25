@@ -1,5 +1,3 @@
-# Reads data
-print('Importing dataframe.')
 import vaex
 import os
 import pandas as pd
@@ -18,7 +16,7 @@ def dummydata2():
     return pdf, pslider_cols
 
 class DataFrame():
-    '''basic things like reading in data'''
+    '''Reads the data'''
     def __init__(self,path):
         # check if path is valid
         if os.path.isfile(path):
