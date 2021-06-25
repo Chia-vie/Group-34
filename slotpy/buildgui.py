@@ -23,9 +23,9 @@ class Ourcoolapp():
         self.logmsg = tk.StringVar()
         self.logmsg.set('Please select a dataframe and click on the type of plot you would you like to make')
         # Read in preview images
-        self.preview_img_1 = tk.PhotoImage(file='slotpy/pictures/one.png')
-        self.preview_img_2 = tk.PhotoImage(file='slotpy/pictures/two.png')
-        self.preview_img_3 = tk.PhotoImage(file='slotpy/pictures/three.png')
+        self.preview_img_1 = tk.PhotoImage(file='slotpy/pictures/histogram.png')
+        self.preview_img_2 = tk.PhotoImage(file='slotpy/pictures/laurasplot.png')
+        self.preview_img_3 = tk.PhotoImage(file='slotpy/pictures/surprise.png')
         self.logoimage = tk.PhotoImage(file='slotpy_logo.png')
         self.buttonsandlabels()
 
@@ -141,15 +141,15 @@ class Ourcoolapp():
         self.plotbutton1 = tk.Button(self.window, image=self.preview_img_1,
                                      text='Enter', bg='red', fg='orange',
                                      command=lambda: self.pressbutton('1'),
-                                     width = 300, height=400)
+                                     width = 400, height=400)
         self.plotbutton2 = tk.Button(self.window, image=self.preview_img_2,
                                      text='Enter', bg='red', fg='orange',
                                      command=lambda: self.pressbutton('2'),
-                                     width = 300, height=400)
+                                     width = 400, height=400)
         self.plotbutton3 = tk.Button(self.window, image=self.preview_img_3,
                                      text='Enter', bg='red', fg='orange',
                                      command=lambda: self.pressbutton('3'),
-                                     width = 300, height=400)
+                                     width = 400, height=400)
 
         self.open_button = ttk.Button(self.window, text='Open a file', command=self.select_file)
         self.dummy_button = ttk.Button(self.window, text='Open dummy data', command=self.select_dummy_file)
