@@ -6,7 +6,7 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="slotpy",
-    version="0.0.3",
+    version="0.0.5",
     author='Laura Ketzer, Christine Ackerl, George Paraschos',
     author_email='lketzer@aip.de, christine.ackerl@univie.ac.at, gfparaschos@mpifr.de',
     description='Sliders and Plots',
