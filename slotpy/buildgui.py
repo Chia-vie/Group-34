@@ -26,7 +26,7 @@ class Ourcoolapp():
         self.preview_img_1 = tk.PhotoImage(file='slotpy/pictures/histogram.png')
         self.preview_img_2 = tk.PhotoImage(file='slotpy/pictures/laurasplot.png')
         self.preview_img_3 = tk.PhotoImage(file='slotpy/pictures/surprise.png')
-        self.logoimage = tk.PhotoImage(file='slotpy_logo.png')
+        self.logoimage = tk.PhotoImage(file='slotpy/pictures/slotpy_logo.png')
         self.buttonsandlabels()
 
         self.file = StringVar
