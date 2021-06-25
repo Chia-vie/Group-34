@@ -16,7 +16,7 @@ class Ourcoolapp():
         # background color
         self.window.config(bg='pale turquoise')
         # title
-        self.window.title('Group-34: Our fabulous app slotpy')
+        self.window.title('Group-34: Our fabulous App')
         # Variables for the output, currently just a string
         self.out = tk.StringVar()
         self.out.set('')
@@ -26,6 +26,7 @@ class Ourcoolapp():
         self.preview_img_1 = tk.PhotoImage(file='slotpy/pictures/one.png')
         self.preview_img_2 = tk.PhotoImage(file='slotpy/pictures/two.png')
         self.preview_img_3 = tk.PhotoImage(file='slotpy/pictures/three.png')
+        self.logoimage = tk.PhotoImage(file='slotpy_logo.png')
         self.buttonsandlabels()
 
         self.file = StringVar
@@ -61,6 +62,9 @@ class Ourcoolapp():
         # display the updated out string in window
         self.window.update_idletasks()
 
+    def linktopage(self):
+        '''We could use the logo as a button to link to our github or so.'''
+        pass
 
     def decrease(self):
         x, y = self.line.get_data()
@@ -120,10 +124,14 @@ class Ourcoolapp():
 
         # Header in the window
         self.header = tk.Label(self.window,
-                          text='*******    We need a cool name for this!    ********',
+                          text='*******    Welcome to slotpy!   ********',
                           font=('Helvetica',16, 'bold'), bg='light blue', fg='blue4',
                           width = 40, height=2)
 
+        self.logo = tk.Button(self.window, image=self.logoimage,
+                                     text='Enter', bg='red', fg='orange',
+                                     command=self.linktopage,
+                                     width=100, height=100)
         # Show log messages
         self.description = tk.Label(self.window,
                                textvariable=self.logmsg,
@@ -171,4 +179,5 @@ class Ourcoolapp():
         self.plotbutton1.grid(row=3, column=0)
         self.plotbutton2.grid(row=3,column=1)
         self.plotbutton3.grid(row=3, column=2)
+        self.logo.grid(row=0,column=2)
         self.widgets.grid(row=7,column=1, columnspan=1)

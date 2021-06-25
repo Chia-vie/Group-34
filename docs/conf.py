@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../slotpy'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Slotpy'
+project = 'slotpy'
 copyright = '2021, Christine Ackerl, Laura K., George'
 author = 'Christine Ackerl, Laura K., George'
 master_doc='index'
