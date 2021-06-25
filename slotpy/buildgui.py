@@ -23,9 +23,9 @@ class Ourcoolapp():
         self.logmsg = tk.StringVar()
         self.logmsg.set('Please select a dataframe and click on the type of plot you would you like to make')
         # Read in preview images
-        self.preview_img_1 = tk.PhotoImage(file='App/pictures/one.png')
-        self.preview_img_2 = tk.PhotoImage(file='App/pictures/two.png')
-        self.preview_img_3 = tk.PhotoImage(file='App/pictures/three.png')
+        self.preview_img_1 = tk.PhotoImage(file='slotpy/pictures/one.png')
+        self.preview_img_2 = tk.PhotoImage(file='slotpy/pictures/two.png')
+        self.preview_img_3 = tk.PhotoImage(file='slotpy/pictures/three.png')
         self.buttonsandlabels()
 
         self.file = StringVar
