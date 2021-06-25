@@ -6,7 +6,7 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="slotpy",
-    version="0.0.5",
+    version="0.0.6",
     author='Laura Ketzer, Christine Ackerl, George Paraschos',
     author_email='lketzer@aip.de, christine.ackerl@univie.ac.at, gfparaschos@mpifr.de',
     description='Sliders and Plots',
@@ -23,5 +23,6 @@ setuptools.setup(
 
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: BSD License',],
-    install_requires=requirements
+    install_requires=requirements,
+    include_package_data=True
 )
