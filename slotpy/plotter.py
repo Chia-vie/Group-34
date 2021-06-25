@@ -88,25 +88,30 @@ class Plotter():
     def set_xlim(self, x_lower, x_upper):
         """Set limits of the x-axis."""
         self.xlim = (x_lower, x_upper)
+        raise NotImplementedError("Not implemented.")
 
     def set_ylim(self, y_lower, y_upper):
         """Set limits of the y-axis."""
         self.ylim = (y_lower, y_upper)
+        raise NotImplementedError("Not implemented.")
 
     def set_zlim(self, z_lower, z_upper):
         """Set limits of the z-axis."""
         self.zlim = (z_lower, z_upper)
+        raise NotImplementedError("Not implemented.")
 
     def set_xyz_cols(self, xcol, ycol, zcol):
         """Set the x-, y- and z-column names to plot.
         FUTURE: could split this up into 3 functions
         """ 
         self.xyz_cols = [xcol, ycol, zcol]
+        raise NotImplementedError("Not implemented.")
 
     def set_slider_cols(self, slider_cols):
         """Set the columns to slide over (for plot type 1). 
         Input is a list of column names (str)."""
         self.slider_cols = slider_cols
+        raise NotImplementedError("Not implemented.")
 
     def plot_type1(self):
         """Generate the interactive plotly plot.
